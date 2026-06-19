@@ -2,9 +2,4 @@ User-agent: *
 
 Allow: /
 
-Disallow: /admin/
-Disallow: /private/
-
 Sitemap: https://www.kmautoecm.com/sitemap.xml
-
-Host: https://www.kmautoecm.com
