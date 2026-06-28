@@ -217,11 +217,13 @@
     form.addEventListener('submit', e => {
       e.preventDefault();
 
-      // BUG FIX: guard against emailjs not being loaded
+      // Guard: ensure emailjs is loaded and initialised
       if (typeof emailjs === 'undefined') {
         showToast('❌ Email service not available. Please call or WhatsApp us.', 'error');
         return;
       }
+      // Re-init in case init was missed at page load
+      try { emailjs.init('loL9OMv9v5OBE9Ocy'); } catch(e) {}
 
       const name = document.getElementById('from_name')?.value.trim();
       const email = document.getElementById('from_email')?.value.trim();
