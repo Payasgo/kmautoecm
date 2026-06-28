@@ -8,11 +8,21 @@
   <meta name="description" content="Learn about KM Autos Diagnostics — Guntur's trusted automotive electronics specialists. OEM-level ECU programming, BCM coding, airbag repair and advanced diagnostics since 2024.">
   <meta name="keywords" content="KM Autos Diagnostics about, automotive electronics Guntur, ECU programming specialist, car diagnostics expert Guntur">
   <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/banner-logo.png">
+  <link rel="apple-touch-icon" href="images/banner-logo.png">
+
+  <!-- Geo meta for local search -->
+  <meta name="geo.region" content="IN-TG">
+  <meta name="geo.placename" content="Hyderabad, Telangana">
+  <meta name="geo.position" content="17.3850;78.4867">
+  <meta name="ICBM" content="17.3850, 78.4867">
   <meta name="author" content="Kranthi Kumar Yarlagadda">
-  <link rel="canonical" href="https://www.kmautoecm.com/About.html">
+  <link rel="canonical" href="https://www.kmautoecm.com/about.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.kmautoecm.com/About.html">
+  <meta property="og:url" content="https://www.kmautoecm.com/about.html">
   <meta property="og:title" content="About Us | KM Autos Diagnostics Guntur">
   <meta property="og:description" content="Guntur's trusted automotive electronics specialist — OEM-level precision, advanced equipment, transparent pricing.">
   <meta property="og:image" content="https://www.kmautoecm.com/images/banner.png">
@@ -68,7 +78,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
     <a href="index.html">HOME</a>
     <a href="services.html">SERVICES</a>
     <a href="gallery.html">GALLERY</a>
-    <a href="About.html" class="active" aria-current="page">ABOUT</a>
+    <a href="about.html" class="active" aria-current="page">ABOUT</a>
     <a href="contact.html">CONTACT</a>
     <a href="tel:+919866621114" class="call-btn" style="margin-left:8px">📞 CALL NOW</a>
   </nav>
@@ -123,7 +133,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
     <div class="footer-col">
       <h4>Quick Links</h4>
       <a href="index.html">Home</a><a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a><a href="About.html">About Us</a><a href="contact.html">Contact</a>
+      <a href="gallery.html">Gallery</a><a href="about.html">About Us</a><a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
@@ -131,7 +141,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
       <a href="mailto:kranthikmauto@gmail.com">kranthikmauto@gmail.com</a>
     </div>
   </div>
-  <div class="footer-bottom"><p>© 2025 <span>KM Autos Diagnostics</span>. Developed by <span>Kranthi Kumar Yarlagadda</span>. All rights reserved.</p></div>
+  <div class="footer-bottom"><p>© <span id="yr"></span> <span>KM Autos Diagnostics</span>. Developed by <span>Kranthi Kumar Yarlagadda</span>. All rights reserved.</p></div>
 </footer>
 <script src="js/script.js" defer></script>
 
@@ -144,5 +154,6 @@ var st=document.getElementById("scrollTop");
 window.addEventListener("scroll",function(){st.classList.toggle("visible",window.scrollY>400)});
 st.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
 </script>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
 </body>
 </html>

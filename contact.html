@@ -8,6 +8,16 @@
   <meta name="description" content="Contact KM Autos Diagnostics in Guntur, Andhra Pradesh. Call or WhatsApp +91 9866621114 for ECU reprogramming, airbag repair, BCM coding and advanced vehicle diagnostics. Quick response guaranteed.">
   <meta name="keywords" content="KM Autos Diagnostics contact, car diagnostics Guntur contact, ECU repair contact Guntur, auto electronics phone number Guntur">
   <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/banner-logo.png">
+  <link rel="apple-touch-icon" href="images/banner-logo.png">
+
+  <!-- Geo meta for local search -->
+  <meta name="geo.region" content="IN-TG">
+  <meta name="geo.placename" content="Hyderabad, Telangana">
+  <meta name="geo.position" content="17.3850;78.4867">
+  <meta name="ICBM" content="17.3850, 78.4867">
   <meta name="author" content="Kranthi Kumar Yarlagadda">
   <link rel="canonical" href="https://www.kmautoecm.com/contact.html">
 
@@ -68,7 +78,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
     <a href="index.html">HOME</a>
     <a href="services.html">SERVICES</a>
     <a href="gallery.html">GALLERY</a>
-    <a href="About.html">ABOUT</a>
+    <a href="about.html">ABOUT</a>
     <a href="contact.html" class="active" aria-current="page">CONTACT</a>
     <a href="tel:+919866621114" class="call-btn" style="margin-left:8px">📞 CALL NOW</a>
   </nav>
@@ -164,7 +174,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
     <div class="footer-col">
       <h4>Quick Links</h4>
       <a href="index.html">Home</a><a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a><a href="About.html">About Us</a><a href="contact.html">Contact</a>
+      <a href="gallery.html">Gallery</a><a href="about.html">About Us</a><a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
@@ -172,7 +182,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
       <a href="mailto:kranthikmauto@gmail.com">kranthikmauto@gmail.com</a>
     </div>
   </div>
-  <div class="footer-bottom"><p>© 2025 <span>KM Autos Diagnostics</span>. Developed by <span>Kranthi Kumar Yarlagadda</span>. All rights reserved.</p></div>
+  <div class="footer-bottom"><p>© <span id="yr"></span> <span>KM Autos Diagnostics</span>. Developed by <span>Kranthi Kumar Yarlagadda</span>. All rights reserved.</p></div>
 </footer>
 
 <!-- BUG FIX: Toast element present on ALL pages that use showToast -->
@@ -197,5 +207,6 @@ var st=document.getElementById("scrollTop");
 window.addEventListener("scroll",function(){st.classList.toggle("visible",window.scrollY>400)});
 st.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
 </script>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
 </body>
 </html>

@@ -10,6 +10,16 @@
   <meta name="keywords" content="ECU reprogramming Guntur, ECM programming, BCM coding Guntur, airbag module repair, EPS calibration, immobilizer key programming, EEPROM programming, auto diagnostics Guntur, car electronics Guntur, KM Autos Diagnostics">
   <meta name="author" content="Kranthi Kumar Yarlagadda">
   <meta name="robots" content="index, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/banner-logo.png">
+  <link rel="apple-touch-icon" href="images/banner-logo.png">
+
+  <!-- Geo meta for local search -->
+  <meta name="geo.region" content="IN-TG">
+  <meta name="geo.placename" content="Hyderabad, Telangana">
+  <meta name="geo.position" content="17.3850;78.4867">
+  <meta name="ICBM" content="17.3850, 78.4867">
   <meta name="theme-color" content="#ff3c00">
   <link rel="canonical" href="https://www.kmautoecm.com/">
 
@@ -167,7 +177,7 @@ nav a:hover::after,nav a.active::after{width:60%}
     <a href="index.html" class="active" aria-current="page">HOME</a>
     <a href="services.html">SERVICES</a>
     <a href="gallery.html">GALLERY</a>
-    <a href="About.html">ABOUT</a>
+    <a href="about.html">ABOUT</a>
     <a href="contact.html">CONTACT</a>
     <a href="#download-app" class="nav-app-btn">📱 GET APP</a>
     <a href="tel:+919866621114" class="call-btn" style="margin-left:8px">📞 CALL NOW</a>
@@ -318,6 +328,19 @@ nav a:hover::after,nav a.active::after{width:60%}
       </a>
     </div>
   </section>
+
+  <!-- Trust banner — moved inside <main> (was incorrectly placed after </html>) -->
+  <section class="trust-banner" aria-label="Trust and transparency statement">
+    <h2>Driving Trust Through Transparency</h2>
+    <p class="trust-sub">Track Every Service • Monitor Every Update • Trust Every Decision</p>
+    <p class="trust-body">KMAutos combines advanced vehicle diagnostics with complete customer visibility—so every booking, update, invoice, and delivery is transparent from start to finish.</p>
+    <div class="trust-pills">
+      <span>✓ Real-Time Updates</span>
+      <span>✓ Transparent Pricing</span>
+      <span>✓ Digital Records</span>
+      <span>✓ Live Notifications</span>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -339,7 +362,7 @@ nav a:hover::after,nav a.active::after{width:60%}
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="gallery.html">Gallery</a>
-      <a href="About.html">About Us</a>
+      <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
       <a href="#download-app" style="color:var(--red);font-weight:600">📱 Download App</a>
     </div>
@@ -352,7 +375,7 @@ nav a:hover::after,nav a.active::after{width:60%}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 <span>KM Autos Diagnostics</span>. Developed by <span>Kranthi Kumar Yarlagadda</span>. All rights reserved.</p>
+    <p>© <span id="yr"></span> <span>KM Autos Diagnostics</span>. Developed by <span>Kranthi Kumar Yarlagadda</span>. All rights reserved.</p>
   </div>
 </footer>
 
@@ -415,17 +438,6 @@ var st=document.getElementById("scrollTop");
 window.addEventListener("scroll",function(){st.classList.toggle("visible",window.scrollY>400)});
 st.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
 </script>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
 </body>
 </html>
-
-<section style="background:linear-gradient(180deg,rgba(0,0,0,.85),rgba(0,0,0,.95));padding:40px 8%;border-bottom:1px solid rgba(255,255,255,.08);color:white;text-align:center;">
-<h2 style="font-size:48px;margin:0;color:#ff6b00;">Driving Trust Through Transparency</h2>
-<p style="font-size:20px;max-width:900px;margin:20px auto;color:#d1d5db;">Track Every Service • Monitor Every Update • Trust Every Decision</p>
-<p style="font-size:18px;max-width:1000px;margin:auto;color:#ffffff;">KMAutos combines advanced vehicle diagnostics with complete customer visibility—so every booking, update, invoice, and delivery is transparent from start to finish.</p>
-<div style="margin-top:25px;display:flex;justify-content:center;gap:15px;flex-wrap:wrap;">
-<span style="padding:12px 18px;background:#111827;border-radius:30px;">✓ Real-Time Updates</span>
-<span style="padding:12px 18px;background:#111827;border-radius:30px;">✓ Transparent Pricing</span>
-<span style="padding:12px 18px;background:#111827;border-radius:30px;">✓ Digital Records</span>
-<span style="padding:12px 18px;background:#111827;border-radius:30px;">✓ Live Notifications</span>
-</div>
-</section>
