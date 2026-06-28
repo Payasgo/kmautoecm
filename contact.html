@@ -14,10 +14,10 @@
   <link rel="apple-touch-icon" href="images/banner-logo.png">
 
   <!-- Geo meta for local search -->
-  <meta name="geo.region" content="IN-TG">
-  <meta name="geo.placename" content="Hyderabad, Telangana">
-  <meta name="geo.position" content="17.3850;78.4867">
-  <meta name="ICBM" content="17.3850, 78.4867">
+  <meta name="geo.region" content="IN-AP">
+  <meta name="geo.placename" content="Guntur, Andhra Pradesh">
+  <meta name="geo.position" content="16.3067;80.4365">
+  <meta name="ICBM" content="16.3067, 80.4365">
   <meta name="author" content="Kranthi Kumar Yarlagadda">
   <link rel="canonical" href="https://www.kmautoecm.com/contact.html">
 
@@ -25,13 +25,13 @@
   <meta property="og:url" content="https://www.kmautoecm.com/contact.html">
   <meta property="og:title" content="Contact KM Autos Diagnostics Guntur | +91 9866621114">
   <meta property="og:description" content="Reach KM Autos Diagnostics via call, WhatsApp or email for professional auto electronics services in Guntur, Andhra Pradesh.">
-  <meta property="og:image" content="https://www.kmautoecm.com/images/banner.png">
+  <meta property="og:image" content="https://www.kmautoecm.com/images/banner.webp">
   <meta property="og:site_name" content="KM Autos Diagnostics">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact KM Autos Diagnostics Guntur">
   <meta name="twitter:description" content="Call or WhatsApp +91 9866621114 for ECU reprogramming, airbag repair and car diagnostics in Guntur, Andhra Pradesh.">
-  <meta name="twitter:image" content="https://www.kmautoecm.com/images/banner.png">
+  <meta name="twitter:image" content="https://www.kmautoecm.com/images/banner.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,7 +71,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
 <body>
 <header>
   <a href="index.html" class="logo">
-    <picture><source srcset="images/banner-logo.webp" type="image/webp"><img src="images/banner-logo.png" alt="KM Autos Diagnostics Logo" class="logo-icon" width="44" height="44"></picture>
+    <picture><source srcset="images/banner-logo.webp" type="image/webp"><img src="images/banner-logo.png" alt="KM Autos Diagnostics Logo" class="logo-icon" width="44" height="44" loading="lazy"></picture>
     <div class="logo-text"><span class="red">KM</span> AUTOS<small>DIAGNOSTICS</small></div>
   </a>
   <nav aria-label="Main navigation">
@@ -101,6 +101,8 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
           <p>📞 <a href="tel:+919866621114" style="color:#ddd">+91 9866621114</a></p>
           <p>💬 <a href="https://wa.me/919866621114" target="_blank" rel="noopener noreferrer" style="color:#ddd">WhatsApp Support Available</a></p>
           <p>📍 Guntur, Andhra Pradesh, India</p>
+          <p style="margin-top:14px">🕘 <strong style="color:#fff">Mon – Sat:</strong> <span style="color:#ddd">9:00 AM – 7:00 PM</span></p>
+          <p>🔴 <strong style="color:#fff">Sunday:</strong> <span style="color:#777">Closed</span></p>
         </address>
         <div style="margin-top:26px">
           <p style="color:#555;font-size:11px;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase">Quick Actions</p>
@@ -115,16 +117,16 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
         <h2>Write To Us</h2>
         <!-- BUG FIX: Added novalidate & correct aria labels for accessibility -->
         <form class="feedback-form" id="contactForm" novalidate aria-label="Contact form">
-          <label for="from_name" class="sr-only">Your Name</label>
-          <input type="text" id="from_name" name="from_name" placeholder="Your Name *" required autocomplete="name" aria-required="true">
+          <label for="from_name" class="form-label">Your Name *</label>
+          <input type="text" id="from_name" name="from_name" placeholder="Your Name" required autocomplete="name" aria-required="true">
 
-          <label for="from_email" class="sr-only">Your Email</label>
-          <input type="email" id="from_email" name="from_email" placeholder="Your Email *" required autocomplete="email" aria-required="true">
+          <label for="from_email" class="form-label">Email Address *</label>
+          <input type="email" id="from_email" name="from_email" placeholder="Your Email" required autocomplete="email" aria-required="true">
 
-          <label for="phone" class="sr-only">Phone Number</label>
+          <label for="phone" class="form-label">Phone Number</label>
           <input type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel">
 
-          <label for="service" class="sr-only">Select Service</label>
+          <label for="service" class="form-label">Service Required</label>
           <select id="service" name="service" aria-label="Select service">
             <option value="" disabled selected>Select Service</option>
             <option>ECM / ECU Reprogramming</option>
@@ -138,8 +140,8 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
             <option>Other</option>
           </select>
 
-          <label for="message" class="sr-only">Your Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Describe your issue or enquiry *" required aria-required="true"></textarea>
+          <label for="message" class="form-label">Your Message *</label>
+          <textarea id="message" name="message" rows="5" placeholder="Describe your issue or enquiry…" required aria-required="true"></textarea>
 
           <button type="submit" id="submitBtn">Send Message 🚀</button>
         </form>
@@ -166,7 +168,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="index.html" class="logo">
-        <picture><source srcset="images/banner-logo.webp" type="image/webp"><img src="images/banner-logo.png" alt="KM Autos Diagnostics" class="logo-icon" width="44" height="44"></picture>
+        <picture><source srcset="images/banner-logo.webp" type="image/webp"><img src="images/banner-logo.png" alt="KM Autos Diagnostics" class="logo-icon" width="44" height="44" loading="lazy"></picture>
         <div class="logo-text"><span class="red">KM</span> AUTOS<small>DIAGNOSTICS</small></div>
       </a>
       <p>Advanced automotive electronics and ECU programming specialists in Guntur, Andhra Pradesh.</p>
@@ -189,7 +191,7 @@ nav a:hover,nav a.active{color:#fff}nav a:hover::after,nav a.active::after{width
 <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
 <!-- EmailJS – init before script.js -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 <script>
   (function(){
     var PUBLIC_KEY = 'loL9OMv9v5OBE9Ocy';

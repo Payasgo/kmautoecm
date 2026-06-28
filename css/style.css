@@ -529,3 +529,98 @@ footer{background:linear-gradient(180deg,#050505,#000)}
   color: #d1d5db;
   border: 1px solid rgba(255,255,255,.08);
 }
+
+/* ===== CLICKABLE SERVICE CARDS ===== */
+a.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.card-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.5px;
+  transition: gap var(--transition);
+}
+a.card:hover .card-cta {
+  letter-spacing: 1.5px;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section {
+  background: var(--bg2);
+  padding: 80px 8%;
+  border-top: 1px solid var(--border);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+.testimonials-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 46px);
+  color: #fff;
+  margin-bottom: 10px;
+}
+.testimonials-header p {
+  color: #777;
+  font-size: 14px;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+.testimonial-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+.testimonial-card:hover {
+  border-color: var(--red);
+  transform: translateY(-4px);
+}
+.stars {
+  color: #f59e0b;
+  font-size: 18px;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+.testimonial-card p {
+  color: #ccc;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+.testimonial-author strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+}
+.testimonial-author span {
+  color: #555;
+  font-size: 12px;
+}
+
+/* ===== VISIBLE FORM LABELS ===== */
+.form-label {
+  display: block;
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  margin-top: 14px;
+}
+.form-label:first-child {
+  margin-top: 0;
+}

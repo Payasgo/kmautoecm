@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Page Not Found | KM Autos Diagnostics</title>
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/banner-logo.png">
+  <link rel="apple-touch-icon" href="images/banner-logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--red:#ff3c00;--font-display:'Oswald','Arial Narrow',Arial,sans-serif;--font-body:'Poppins',system-ui,sans-serif}
+    body{font-family:var(--font-body);background:#000;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 6%;overflow-x:hidden}
+    .err-code{font-family:var(--font-display);font-size:clamp(80px,20vw,180px);line-height:1;color:var(--red);text-shadow:0 0 60px rgba(255,60,0,.3);margin-bottom:0}
+    .err-title{font-family:var(--font-display);font-size:clamp(20px,4vw,36px);color:#fff;margin:10px 0 16px;letter-spacing:2px}
+    .err-msg{color:#777;font-size:15px;max-width:480px;line-height:1.7;margin-bottom:36px}
+    .err-links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .btn-red{background:var(--red);color:#fff;padding:13px 30px;border-radius:6px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .3s,transform .3s}
+    .btn-red:hover{background:#e03300;transform:translateY(-2px)}
+    .btn-dark{border:1px solid #555;color:#fff;padding:13px 30px;border-radius:6px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .3s,color .3s,transform .3s}
+    .btn-dark:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:40px}
+    .logo-icon{height:40px;width:40px;object-fit:contain;border-radius:8px}
+    .logo-text{font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;line-height:1}
+    .logo-text .red{color:var(--red)}
+    .logo-text small{display:block;font-size:9px;letter-spacing:4px;color:var(--red);font-weight:600}
+    .quick-links{margin-top:40px;display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+    .quick-links a{color:#555;font-size:13px;text-decoration:none;transition:color .3s}
+    .quick-links a:hover{color:var(--red)}
+  </style>
+</head>
+<body>
+  <a href="index.html" class="logo" aria-label="KM Autos Diagnostics Home">
+    <picture>
+      <source srcset="images/banner-logo.webp" type="image/webp">
+      <img src="images/banner-logo.png" alt="KM Autos Diagnostics Logo" class="logo-icon" width="40" height="40">
+    </picture>
+    <div class="logo-text"><span class="red">KM</span> AUTOS<small>DIAGNOSTICS</small></div>
+  </a>
+
+  <div class="err-code" aria-label="Error 404">404</div>
+  <h1 class="err-title">Page Not Found</h1>
+  <p class="err-msg">The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
+
+  <div class="err-links">
+    <a href="index.html" class="btn-red">🏠 Go Home</a>
+    <a href="services.html" class="btn-dark">⚙️ Our Services</a>
+    <a href="contact.html" class="btn-dark">📞 Contact Us</a>
+  </div>
+
+  <nav class="quick-links" aria-label="Quick links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</body>
+</html>
