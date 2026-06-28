@@ -236,7 +236,7 @@
       const btn = document.getElementById('submitBtn');
       if (btn) { btn.textContent = 'Sending…'; btn.classList.add('loading'); btn.disabled = true; }
 
-      emailjs.send('service_0koaxpo', 'template_37lyyvo', {
+      emailjs.send('service_j9qvths', 'template_pr92lru', {
         from_name: name,
         from_email: email,
         phone: document.getElementById('phone')?.value.trim() || 'Not provided',
