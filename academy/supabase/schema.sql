@@ -80,6 +80,9 @@ drop policy if exists "Users can read own profile" on public.profiles;
 create policy "Users can read own profile" on public.profiles for select to authenticated using (auth.uid() = id);
 drop policy if exists "Users can update own profile" on public.profiles;
 create policy "Users can update own profile" on public.profiles for update to authenticated using (auth.uid() = id) with check (auth.uid() = id);
+-- Prevent self-promotion: authenticated users may update their name, never their role.
+revoke update on public.profiles from authenticated;
+grant update (full_name) on public.profiles to authenticated;
 drop policy if exists "Published courses are visible" on public.courses;
 create policy "Published courses are visible" on public.courses for select to authenticated using (published = true);
 drop policy if exists "Published modules are visible" on public.modules;
@@ -91,9 +94,23 @@ create policy "Students read own enrollments" on public.enrollments for select t
 drop policy if exists "Students read own progress" on public.lesson_progress;
 create policy "Students read own progress" on public.lesson_progress for select to authenticated using (student_id = auth.uid());
 drop policy if exists "Students create own progress" on public.lesson_progress;
-create policy "Students create own progress" on public.lesson_progress for insert to authenticated with check (student_id = auth.uid());
+create policy "Students create own progress" on public.lesson_progress for insert to authenticated with check (
+  student_id = auth.uid() and exists (
+    select 1 from public.lessons l
+    join public.modules m on m.id = l.module_id
+    join public.enrollments e on e.course_id = m.course_id
+    where l.id = lesson_id and e.student_id = auth.uid()
+  )
+);
 drop policy if exists "Students update own progress" on public.lesson_progress;
-create policy "Students update own progress" on public.lesson_progress for update to authenticated using (student_id = auth.uid()) with check (student_id = auth.uid());
+create policy "Students update own progress" on public.lesson_progress for update to authenticated using (student_id = auth.uid()) with check (
+  student_id = auth.uid() and exists (
+    select 1 from public.lessons l
+    join public.modules m on m.id = l.module_id
+    join public.enrollments e on e.course_id = m.course_id
+    where l.id = lesson_id and e.student_id = auth.uid()
+  )
+);
 
 -- Seed starter course catalogue (unpublished until the academy team is ready).
 insert into public.courses (title,slug,description,level,sort_order) values
