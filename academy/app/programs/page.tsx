@@ -1,0 +1,23 @@
+import Link from "next/link";
+const families=[
+["automotive-foundations","Automotive Foundations","Vehicle systems, workshop safety, tools, service information and diagnostic process."],
+["electrical-electronics","Electrical & Electronics Fundamentals","Voltage, current, resistance, circuit theory, components and safe measurement."],
+["advanced-automotive-electrical","Advanced Automotive Electrical","Wiring diagrams, voltage drop, parasitic draw, circuit faults and networked circuits."],
+["vehicle-networks-modules-software","Vehicle Networks, Modules & Software","ECU architecture, BCM, TCM, CAN, LIN, programming and module communication."],
+["adas-active-safety","ADAS & Active Safety","Driver assistance sensors, calibration concepts, radar, camera and safety systems."],
+["engine-mechanical","Engine Mechanical Systems","Engine construction, lubrication, cooling, timing, compression and mechanical testing."],
+["engine-performance-emissions","Engine Performance & Emissions","Fuel, ignition, air management, emissions, sensor data and performance diagnosis."],
+["integrated-vehicle-diagnostics","Integrated Vehicle Diagnostics","Systematic diagnosis, scan data, DTC strategy, test plans and verification."],
+["hvac-thermal-management","HVAC & Thermal Management","Climate control, refrigeration cycle, sensors, actuators and thermal systems."],
+["manual-drivetrain-axles-awd","Manual Drivetrain, Axles & AWD","Clutches, manual gearboxes, differentials, shafts and all-wheel drive."],
+["automatic-transmissions","Automatic Transmissions","Hydraulic and electronic controls, solenoids, adaptations and transmission diagnosis."],
+["steering-suspension-tires","Steering, Suspension & Tires","Steering geometry, EPS, suspension, wheel alignment and tire systems."],
+["brake-systems","Brake Systems","Hydraulic brakes, ABS, stability control, sensors and electronic parking brakes."],
+["alternative-fuels-powertrains","Alternative Fuels & Emerging Powertrains","Alternative fuels, energy systems, safety and emerging vehicle technologies."],
+["diesel-engine-systems","Diesel Engine Systems","Diesel combustion, injection, common rail, turbocharging and aftertreatment."],
+["hybrid-electric-vehicles","Hybrid & Electric Vehicles","High-voltage safety, battery systems, inverters, motors and hybrid control."],
+["body-structure-collision","Body, Structure & Collision","Body electronics, restraints, airbag systems, structural awareness and post-repair checks."],
+["service-operations-business","Service Operations & Automotive Business","Workshop process, customer communication, estimates, quality and business practice."]
+];
+const levels=[["Foundation","Understand core principles and identify system components."],["Technician","Test components, interpret measurements and follow diagnostic procedures."],["Advanced","Analyse complex faults, evaluate evidence and validate repair strategies."]];
+export default function ProgramsPage(){return <><div className="topline"/><header className="header"><div className="wrap nav"><Link className="brand" href="/"><img src="https://www.kmautoecm.com/images/banner-logo.webp" alt="KMAutos logo"/><span><b><span>KM</span> AUTOS</b><small>DIAGNOSTICS ACADEMY</small></span></Link><div style={{display:"flex",gap:12}}><Link className="btn secondary" href="/login">Student login</Link><Link className="btn" href="/signup">Join free ↗</Link></div></div></header><main className="wrap dash"><div className="eyebrow">KMAutos learning framework · free education</div><h1 className="sectionTitle" style={{fontSize:48}}>Automotive learning pathways</h1><p className="muted" style={{maxWidth:780}}>Explore 18 technical subject families across three progressive learning levels. Each pathway will grow into structured modules, lessons, practice activities and assessments.</p><div className="levelGrid">{levels.map(([name,desc],i)=><article className="card" key={name}><div className="eyebrow">LEVEL 0{i+1}</div><h2 className="sectionTitle" style={{fontSize:30}}>{name}</h2><p>{desc}</p></article>)}</div><div className="eyebrow" style={{marginTop:48}}>18 subject families · 54 planned pathways</div><div className="familyGrid">{families.map(([slug,name,desc],i)=><article className="card" key={slug}><div className="eyebrow">SUBJECT {String(i+1).padStart(2,"0")}</div><h3>{name}</h3><p>{desc}</p><div className="levelTags">{levels.map(([level])=><span key={level}>{level}</span>)}</div><Link className="textLink" href="/signup">Create free account to learn →</Link></article>)}</div></main><footer className="footer"><div className="wrap">© KMAutos Diagnostics Academy · <a href="https://www.kmautoecm.com/">KMAutos business website</a></div></footer></>}
