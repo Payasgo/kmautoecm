@@ -11,8 +11,8 @@ export default function AuthForm({ mode }: Props) {
   const router=useRouter(); const params=useSearchParams(); const next=params.get("next")==="/dashboard"?"/dashboard":"/dashboard";
   async function submit(e:React.FormEvent<HTMLFormElement>){e.preventDefault();setBusy(true);setError("");setSuccess("");
     try { const supabase=createClient();
-      if(mode==="signup"){const {data,error}=await supabase.auth.signUp({email,password,options:{data:{full_name:name},emailRedirectTo:`${window.location.origin}/login`}});if(error)throw error;
-        if(data.session){router.replace("/dashboard");router.refresh();}else setSuccess("Account created. Check your email for the confirmation link, then sign in.");
+      if(mode==="signup"){const {data,error}=await supabase.auth.signUp({email,password,options:{data:{full_name:name},emailRedirectTo:`${window.location.origin}/auth/callback`}});if(error)throw error;
+        if(data.session){router.replace("/dashboard");router.refresh();}else setSuccess("Account created. Check your email for the confirmation link. It will return you to the academy to finish signing in.");
       } else {const {error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;router.replace(next);router.refresh();}
     } catch(err){setError(err instanceof Error?err.message:"Something went wrong. Please try again.");} finally{setBusy(false);}
   }
