@@ -51,12 +51,12 @@ declare target_course uuid; target_student uuid; total_lessons integer; done_les
 begin
  target_student := coalesce(new.student_id,old.student_id);
  select m.course_id into target_course from public.lessons l join public.modules m on m.id=l.module_id where l.id=coalesce(new.lesson_id,old.lesson_id);
- if target_course is null then return coalesce(new,old); end if;
+ if target_course is null then if tg_op='DELETE' then return old; else return new; end if; end if;
  select count(*) into total_lessons from public.lessons l join public.modules m on m.id=l.module_id where m.course_id=target_course and m.published=true and l.published=true;
  select count(*) into done_lessons from public.lesson_progress lp join public.lessons l on l.id=lp.lesson_id join public.modules m on m.id=l.module_id where m.course_id=target_course and m.published=true and l.published=true and lp.student_id=target_student and lp.completed=true;
  pct := case when total_lessons=0 then 0 else round(done_lessons*100.0/total_lessons)::integer end;
  update public.enrollments set progress_percent=pct where student_id=target_student and course_id=target_course;
- return coalesce(new,old);
-end; $$;
+ if tg_op='DELETE' then return old; else return new; end if;
+end; $;
 drop trigger if exists lesson_progress_refresh_enrollment on public.lesson_progress;
 create trigger lesson_progress_refresh_enrollment after insert or update or delete on public.lesson_progress for each row execute function public.refresh_enrollment_progress();
