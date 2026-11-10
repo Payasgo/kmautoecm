@@ -57,6 +57,6 @@ begin
  pct := case when total_lessons=0 then 0 else round(done_lessons*100.0/total_lessons)::integer end;
  update public.enrollments set progress_percent=pct where student_id=target_student and course_id=target_course;
  if tg_op='DELETE' then return old; else return new; end if;
-end; $;
+end; $$;
 drop trigger if exists lesson_progress_refresh_enrollment on public.lesson_progress;
 create trigger lesson_progress_refresh_enrollment after insert or update or delete on public.lesson_progress for each row execute function public.refresh_enrollment_progress();
