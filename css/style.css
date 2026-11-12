@@ -4,8 +4,8 @@
   --red:#ff3c00;--red-dim:rgba(255,60,0,.18);--red-glow:rgba(255,60,0,.35);
   --bg:#000;--bg2:#050505;--bg3:#0d0d0d;--text:#fff;--text-dim:#ccc;
   --border:rgba(255,60,0,.25);
-  --font-display:'Oswald','Arial Narrow',Arial,sans-serif;
-  --font-body:'Poppins',system-ui,sans-serif;
+  --font-display:'Arial Narrow',Arial,sans-serif;
+  --font-body:system-ui,-apple-system,'Segoe UI',sans-serif;
   --transition:.35s ease;--radius:12px;
 }
 html{scroll-behavior:smooth}
@@ -29,7 +29,6 @@ header{
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,60,0,.12);
   transition:padding var(--transition);
-  will-change:padding;
 }
 header.scrolled{padding:10px 6%}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -58,7 +57,7 @@ nav a:hover::after,nav a.active::after{width:60%}
 
 /* ===== HERO ===== */
 .hero{
-  height:100vh;min-height:600px;
+  height:auto;min-height:100vh;min-height:100svh;
   display:flex;align-items:center;position:relative;overflow:hidden;
   background:#111; /* fallback while image loads */
 }
@@ -70,7 +69,7 @@ nav a:hover::after,nav a.active::after{width:60%}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);z-index:1}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#000);pointer-events:none;z-index:2}
-.content{padding:0 8%;max-width:900px;animation:fadeUp .7s ease both;position:relative;z-index:3}
+.content{padding:0 8%;max-width:900px;animation:none;position:relative;z-index:3}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .content h1{font-family:var(--font-display);font-size:clamp(48px,8vw,90px);line-height:1;margin-bottom:14px}
 .content h1 span{color:var(--red)}
@@ -623,4 +622,32 @@ a.card:hover .card-cta {
 }
 .form-label:first-child {
   margin-top: 0;
+}
+
+
+/* ===== ACCESSIBILITY + LIGHTWEIGHT MOTION ===== */
+.skip-link{
+  position:fixed;top:8px;left:8px;z-index:10000;
+  padding:12px 16px;background:#fff;color:#111;border-radius:6px;
+  font-weight:700;transform:translateY(-160%);transition:transform .2s ease;
+}
+.skip-link:focus{transform:translateY(0);outline:3px solid #ff3c00;outline-offset:3px}
+:focus-visible{outline:3px solid #ff8a65;outline-offset:3px}
+a,button,input,select,textarea{scroll-margin-top:100px}
+button,a{ -webkit-tap-highlight-color:transparent }
+@media(max-width:900px){
+  nav{visibility:hidden}
+  nav.open{visibility:visible}
+  nav a{min-height:44px;display:flex;align-items:center;width:100%}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .content,.page-banner h1,.page-banner p,.page-banner .section-label,
+  .feature-card,.gallery-item{animation:none!important;transform:none!important}
 }
