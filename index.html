@@ -95,8 +95,6 @@
         media="(max-width:640px)">
 
   <!-- ===== PERFORMANCE: Preconnect fonts (no render block) ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- ===== CRITICAL CSS: inlined — zero render-blocking ===== -->
   <style>
@@ -159,12 +157,6 @@ nav a:hover::after,nav a.active::after{width:60%}
   <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 
   <!-- ===== FONTS: display=swap prevents FOIT, loaded async ===== -->
-  <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap"
-        onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  </noscript>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -200,7 +192,7 @@ nav a:hover::after,nav a.active::after{width:60%}
       <source srcset="images/banner-fallback.jpg" type="image/jpeg">
       <img src="images/banner-fallback.jpg" alt="" width="1402" height="1122"
            style="width:100%;height:100%;object-fit:cover;object-position:center"
-           fetchpriority="high">
+           fetchpriority="high" loading="eager">
     </picture>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="content">
@@ -231,10 +223,10 @@ nav a:hover::after,nav a.active::after{width:60%}
   </section>
 
   <section class="stats-strip" aria-label="Workshop statistics">
-    <div class="stat"><h3 data-count="500" data-suffix="+">0+</h3><p>Vehicles Serviced</p></div>
-    <div class="stat"><h3 data-count="1" data-suffix="+">0+</h3><p>Years Experience</p></div>
-    <div class="stat"><h3 data-count="14" data-suffix="+">0+</h3><p>Car Brands Supported</p></div>
-    <div class="stat"><h3 data-count="99" data-suffix="%">0%</h3><p>Customer Satisfaction</p></div>
+    <div class="stat"><h3>500+</h3><p>Vehicles Serviced</p></div>
+    <div class="stat"><h3>1+</h3><p>Years Experience</p></div>
+    <div class="stat"><h3>14+</h3><p>Car Brands Supported</p></div>
+    <div class="stat"><h3>99%</h3><p>Customer Satisfaction</p></div>
   </section>
 
   <section class="services-grid" aria-label="Our Services">
@@ -387,64 +379,11 @@ nav a:hover::after,nav a.active::after{width:60%}
 </footer>
 
 <script src="js/script.js" defer></script>
-<script>
-/* ===== SMART DEEP-LINK BUTTONS ===== */
-(function(){
-  const APK_URL   = 'https://drive.google.com/file/d/1WUAMXEmu_ndnvTlXJqmiAitxGRp0KpRx/view?usp=drive_link';
-  const WA_BOOK   = 'https://wa.me/919866621114?text=Hi%2C%20I%20want%20to%20Book%20an%20Appointment%20at%20KM%20Autos%20Diagnostics';
-  const WA_TRACK  = 'https://wa.me/919866621114?text=Hi%2C%20I%20want%20to%20Track%20My%20Vehicle%20at%20KM%20Autos%20Diagnostics';
-  const APP_BOOK  = 'intent://book#Intent;scheme=kmautos;package=com.kranthiyarlagadda.kmautoapp;end';
-  const APP_TRACK = 'intent://track#Intent;scheme=kmautos;package=com.kranthiyarlagadda.kmautoapp;end';
-  const hint      = document.getElementById('app-hint-text');
 
-  function isAndroid(){ return /android/i.test(navigator.userAgent); }
-
-  function smartLink(appIntent, waFallback, btn) {
-    if(isAndroid()){
-      // Try to open the app; if it fails after 1.5s, open WhatsApp
-      if(hint){ hint.textContent = 'Opening KM Autos app…'; hint.style.color = '#ff3c00'; }
-      window.location.href = appIntent;
-      setTimeout(function(){
-        // If we're still here, app wasn't installed — go to WhatsApp
-        if(hint){ hint.textContent = 'App not installed — opening WhatsApp…'; }
-        window.open(waFallback, '_blank');
-        if(hint){ setTimeout(function(){ hint.textContent = 'Tap to open the KM Autos app — or we\'ll redirect you to WhatsApp'; hint.style.color = ''; }, 3000); }
-      }, 1500);
-    } else {
-      // Non-Android: go straight to WhatsApp
-      if(hint){ hint.textContent = 'Opening WhatsApp…'; hint.style.color = '#ff3c00'; }
-      window.open(waFallback, '_blank');
-      setTimeout(function(){ if(hint){ hint.textContent = 'Tap to open the KM Autos app — or we\'ll redirect you to WhatsApp'; hint.style.color=''; }}, 2000);
-    }
-  }
-
-  var bookBtn = document.getElementById('btn-book-appointment');
-  if(bookBtn) bookBtn.addEventListener('click', function(e){
-    e.preventDefault(); smartLink(APP_BOOK, WA_BOOK, bookBtn);
-  });
-
-  var trackBtn = document.getElementById('btn-track-vehicle');
-  if(trackBtn) trackBtn.addEventListener('click', function(e){
-    e.preventDefault(); smartLink(APP_TRACK, WA_TRACK, trackBtn);
-  });
-
-  // "Book Appointment" feature pill
-  var featBook = document.getElementById('feat-book');
-  if(featBook) featBook.addEventListener('click', function(e){
-    e.preventDefault(); smartLink(APP_BOOK, WA_BOOK, featBook);
-  });
-})();
-</script>
 
 <!-- Floating WhatsApp -->
 <a href="https://wa.me/919866621114" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">💬</a>
 <!-- Scroll to Top -->
 <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
-<script>
-var st=document.getElementById("scrollTop");
-window.addEventListener("scroll",function(){st.classList.toggle("visible",window.scrollY>400)});
-st.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});
-</script>
-<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
 </body>
 </html>
