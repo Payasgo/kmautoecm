@@ -4,8 +4,8 @@
   --red:#ff3c00;--red-dim:rgba(255,60,0,.18);--red-glow:rgba(255,60,0,.35);
   --bg:#000;--bg2:#050505;--bg3:#0d0d0d;--text:#fff;--text-dim:#ccc;
   --border:rgba(255,60,0,.25);
-  --font-display:'Oswald','Arial Narrow',Arial,sans-serif;
-  --font-body:'Poppins',system-ui,sans-serif;
+  --font-display:'Arial Narrow',Arial,sans-serif;
+  --font-body:system-ui,-apple-system,'Segoe UI',sans-serif;
   --transition:.35s ease;--radius:12px;
 }
 html{scroll-behavior:smooth}
@@ -57,7 +57,7 @@ nav a:hover::after,nav a.active::after{width:60%}
 
 /* ===== HERO ===== */
 .hero{
-  height:100vh;min-height:600px;
+  height:auto;min-height:100vh;min-height:100svh;
   display:flex;align-items:center;position:relative;overflow:hidden;
   background:#111; /* fallback while image loads */
 }
@@ -69,7 +69,7 @@ nav a:hover::after,nav a.active::after{width:60%}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);z-index:1}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#000);pointer-events:none;z-index:2}
-.content{padding:0 8%;max-width:900px;animation:fadeUp .7s ease both;position:relative;z-index:3}
+.content{padding:0 8%;max-width:900px;animation:none;position:relative;z-index:3}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .content h1{font-family:var(--font-display);font-size:clamp(48px,8vw,90px);line-height:1;margin-bottom:14px}
 .content h1 span{color:var(--red)}
