@@ -25,19 +25,30 @@
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('nav');
   if (hamburger && nav) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      // BUG FIX: keep aria-expanded in sync
-      hamburger.setAttribute('aria-expanded', String(isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
+    const closeMenu = (restoreFocus = false) => {
       nav.classList.remove('open');
+      hamburger.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
       document.body.style.overflow = '';
-    }));
+      if (restoreFocus) hamburger.focus();
+    };
+    hamburger.addEventListener('click', () => {
+      const isOpen = !nav.classList.contains('open');
+      nav.classList.toggle('open', isOpen);
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (isOpen) nav.querySelector('a')?.focus();
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeMenu()));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) closeMenu(true);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && nav.classList.contains('open')) closeMenu();
+    }, { passive: true });
   }
 
   /* ===== FEATURE CARDS ANIMATION ===== */
@@ -62,7 +73,7 @@
   if (stats.length) {
     let animated = false; // BUG FIX: prevent re-running on every scroll
 
-    const countUp = el => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n    const countUp = el => {
       const target = +el.dataset.count;
       const suffix = el.dataset.suffix || '';
       let start = 0;
@@ -80,7 +91,7 @@
         entries.forEach(e => {
           if (e.isIntersecting && !animated) {
             animated = true;
-            stats.forEach(countUp);
+            if (reduceMotion) {\n              stats.forEach(el => { el.textContent = el.dataset.count + (el.dataset.suffix || ''); });\n            } else {\n              stats.forEach(countUp);\n            }
             statsObs.disconnect(); // BUG FIX: disconnect so it runs only once
           }
         });
