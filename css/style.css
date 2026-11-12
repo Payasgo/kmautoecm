@@ -29,7 +29,6 @@ header{
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,60,0,.12);
   transition:padding var(--transition);
-  will-change:padding;
 }
 header.scrolled{padding:10px 6%}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -623,4 +622,32 @@ a.card:hover .card-cta {
 }
 .form-label:first-child {
   margin-top: 0;
+}
+
+
+/* ===== ACCESSIBILITY + LIGHTWEIGHT MOTION ===== */
+.skip-link{
+  position:fixed;top:8px;left:8px;z-index:10000;
+  padding:12px 16px;background:#fff;color:#111;border-radius:6px;
+  font-weight:700;transform:translateY(-160%);transition:transform .2s ease;
+}
+.skip-link:focus{transform:translateY(0);outline:3px solid #ff3c00;outline-offset:3px}
+:focus-visible{outline:3px solid #ff8a65;outline-offset:3px}
+a,button,input,select,textarea{scroll-margin-top:100px}
+button,a{ -webkit-tap-highlight-color:transparent }
+@media(max-width:900px){
+  nav{visibility:hidden}
+  nav.open{visibility:visible}
+  nav a{min-height:44px;display:flex;align-items:center;width:100%}
+  .hamburger{min-width:44px;min-height:44px;align-items:center;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .content,.page-banner h1,.page-banner p,.page-banner .section-label,
+  .feature-card,.gallery-item{animation:none!important;transform:none!important}
 }
