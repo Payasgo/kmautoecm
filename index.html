@@ -167,6 +167,7 @@ nav a:hover::after,nav a.active::after{width:60%}
   </noscript>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header>
   <a href="index.html" class="logo">
     <picture>
@@ -175,7 +176,7 @@ nav a:hover::after,nav a.active::after{width:60%}
     </picture>
     <div class="logo-text"><span class="red">KM</span> AUTOS<small>DIAGNOSTICS</small></div>
   </a>
-  <nav aria-label="Main navigation">
+  <nav id="main-nav" aria-label="Main navigation">
     <a href="index.html" class="active" aria-current="page">HOME</a>
     <a href="services.html">SERVICES</a>
     <a href="gallery.html">GALLERY</a>
@@ -184,12 +185,12 @@ nav a:hover::after,nav a.active::after{width:60%}
     <a href="#download-app" class="nav-app-btn">📱 GET APP</a>
     <a href="tel:+919866621114" class="call-btn" style="margin-left:8px">📞 CALL NOW</a>
   </nav>
-  <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
+  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<main>
+<main id="main-content">
 <section class="hero" aria-label="Hero section">
     <!-- LCP image: <picture> for WebP with PNG fallback, no lazy (it's LCP) -->
     <picture class="hero-bg" aria-hidden="true">
@@ -229,12 +230,12 @@ nav a:hover::after,nav a.active::after{width:60%}
     </div>
   </section>
 
-  <div class="stats-strip" aria-label="Statistics">
+  <section class="stats-strip" aria-label="Workshop statistics">
     <div class="stat"><h3 data-count="500" data-suffix="+">0+</h3><p>Vehicles Serviced</p></div>
     <div class="stat"><h3 data-count="1" data-suffix="+">0+</h3><p>Years Experience</p></div>
     <div class="stat"><h3 data-count="14" data-suffix="+">0+</h3><p>Car Brands Supported</p></div>
     <div class="stat"><h3 data-count="99" data-suffix="%">0%</h3><p>Customer Satisfaction</p></div>
-  </div>
+  </section>
 
   <section class="services-grid" aria-label="Our Services">
     <a href="https://wa.me/919866621114?text=Hi%2C+I+need+help+with+ECM+%2F+ECU+Reprogramming" class="card" target="_blank" rel="noopener noreferrer" aria-label="Enquire about ECM / ECU Reprogramming"><div class="service-icon" aria-hidden="true">⚙️</div><h3>ECM / ECU Reprogramming</h3><p>ECU flashing, firmware updates, diagnostics and calibration for all major brands.</p><span class="card-cta">Enquire →</span></a>
