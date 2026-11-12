@@ -99,7 +99,7 @@
   <!-- ===== CRITICAL CSS: inlined — zero render-blocking ===== -->
   <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#ff3c00;--red-dim:rgba(255,60,0,.18);--red-glow:rgba(255,60,0,.35);--bg:#000;--bg2:#050505;--bg3:#0d0d0d;--text:#fff;--text-dim:#ccc;--border:rgba(255,60,0,.25);--font-display:'Oswald','Arial Narrow',Arial,sans-serif;--font-body:'Poppins',system-ui,sans-serif;--transition:.35s ease;--radius:12px}
+:root{--red:#ff3c00;--red-dim:rgba(255,60,0,.18);--red-glow:rgba(255,60,0,.35);--bg:#000;--bg2:#050505;--bg3:#0d0d0d;--text:#fff;--text-dim:#ccc;--border:rgba(255,60,0,.25);--font-display:'Arial Narrow',Arial,sans-serif;--font-body:system-ui,-apple-system,'Segoe UI',sans-serif;--transition:.35s ease;--radius:12px}
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:#000;color:#fff;line-height:1.6;overflow-x:hidden}
 img{max-width:100%;display:block}
@@ -124,11 +124,11 @@ nav a:hover::after,nav a.active::after{width:60%}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 /* Hero — background set via JS after load to avoid render-block */
-.hero{height:100vh;min-height:600px;background:#111;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero{height:auto;min-height:100vh;min-height:100svh;background:#111;display:flex;align-items:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
 .hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:1}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,#000);pointer-events:none;z-index:2}
-.content{padding:0 8%;max-width:900px;animation:fadeUp .8s ease both;position:relative;z-index:3}
+.content{padding:0 8%;max-width:900px;animation:none;position:relative;z-index:3}
 @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 .content h1{font-family:var(--font-display);font-size:clamp(48px,8vw,90px);line-height:1;margin-bottom:14px}
 .content h1 span{color:var(--red)}
