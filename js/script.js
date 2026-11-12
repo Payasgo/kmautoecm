@@ -68,57 +68,6 @@
     }
   }
 
-  /* ===== STATS COUNTER ===== */
-  const stats = document.querySelectorAll('.stat h3[data-count]');
-  if (stats.length) {
-    let animated = false; // BUG FIX: prevent re-running on every scroll
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;\n    const countUp = el => {
-      const target = +el.dataset.count;
-      const suffix = el.dataset.suffix || '';
-      let start = 0;
-      const step = target / 60;
-      const timer = setInterval(() => {
-        start = Math.min(start + step, target);
-        el.textContent = Math.floor(start) + suffix;
-        if (start >= target) clearInterval(timer);
-      }, 20);
-    };
-
-    const strip = document.querySelector('.stats-strip');
-    if (strip) {
-      const statsObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting && !animated) {
-            animated = true;
-            if (reduceMotion) {\n              stats.forEach(el => { el.textContent = el.dataset.count + (el.dataset.suffix || ''); });\n            } else {\n              stats.forEach(countUp);\n            }
-            statsObs.disconnect(); // BUG FIX: disconnect so it runs only once
-          }
-        });
-      }, { threshold: 0.5 });
-      statsObs.observe(strip);
-    }
-  }
-
-  /* ===== SERVICE CARDS STAGGER ===== */
-  const cards = document.querySelectorAll('.card');
-  if (cards.length) {
-    cards.forEach((c, i) => {
-      c.style.opacity = '0';
-      c.style.transform = 'translateY(28px)';
-      c.style.transition = `opacity .5s ease ${i * .08}s,transform .5s ease ${i * .08}s,border-color .35s,box-shadow .35s`;
-    });
-    const cardObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-    cards.forEach(c => cardObs.observe(c));
-  }
-
   /* ===== GALLERY FILTER TABS ===== */
   const tabBtns = document.querySelectorAll('.tab-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
@@ -285,4 +234,53 @@
     setTimeout(() => t.classList.remove('show'), 5000);
   }
 
+})();
+
+
+/* ===== HOMEPAGE UTILITIES (deferred with the main script) ===== */
+(function () {
+  'use strict';
+  const APK_URL = 'https://drive.google.com/file/d/1WUAMXEmu_ndnvTlXJqmiAitxGRp0KpRx/view?usp=drive_link';
+  const WA_BOOK = 'https://wa.me/919866621114?text=Hi%2C%20I%20want%20to%20Book%20an%20Appointment%20at%20KM%20Autos%20Diagnostics';
+  const WA_TRACK = 'https://wa.me/919866621114?text=Hi%2C%20I%20want%20to%20Track%20My%20Vehicle%20at%20KM%20Autos%20Diagnostics';
+  const APP_BOOK = 'intent://book#Intent;scheme=kmautos;package=com.kranthiyarlagadda.kmautoapp;end';
+  const APP_TRACK = 'intent://track#Intent;scheme=kmautos;package=com.kranthiyarlagadda.kmautoapp;end';
+  const hint = document.getElementById('app-hint-text');
+
+  function smartLink(appIntent, waFallback) {
+    if (/android/i.test(navigator.userAgent)) {
+      if (hint) hint.textContent = 'Opening KM Autos app…';
+      window.location.href = appIntent;
+      window.setTimeout(() => {
+        if (document.visibilityState === 'visible') {
+          if (hint) hint.textContent = 'App not installed — opening WhatsApp…';
+          window.location.href = waFallback;
+        }
+      }, 1500);
+    } else {
+      if (hint) hint.textContent = 'Opening WhatsApp…';
+      window.open(waFallback, '_blank', 'noopener');
+    }
+  }
+  document.getElementById('btn-book-appointment')?.addEventListener('click', event => {
+    event.preventDefault(); smartLink(APP_BOOK, WA_BOOK);
+  });
+  document.getElementById('btn-track-vehicle')?.addEventListener('click', event => {
+    event.preventDefault(); smartLink(APP_TRACK, WA_TRACK);
+  });
+  document.getElementById('feat-book')?.addEventListener('click', event => {
+    event.preventDefault(); smartLink(APP_BOOK, WA_BOOK);
+  });
+
+  const scrollTop = document.getElementById('scrollTop');
+  if (scrollTop) {
+    window.addEventListener('scroll', () => {
+      scrollTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+    scrollTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  const year = document.getElementById('yr');
+  if (year) year.textContent = new Date().getFullYear();
 })();
